@@ -7,19 +7,39 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 
+// const orders = [100, 200, 300]
+const gifts = [
+  'CPU I9',
+  'Ram 8GB',
+  'RGB Keyboard',
+]
+
 const State = () => {
-  const [counter, setCounter] = useState(1);
-  const handleIncrease = () => {
-    setCounter(counter + 1);
-  };
+  
+  // const [gift, setGift] = useState(() => {
+  //   const total = orders.reduce((total, current) => total + current)
+  //   return total
+  // });
+
+  // const handleIncrease = () => {
+  //   setGift(gift + 1);
+  // };
+
+  const [gift,setGift] = useState()
+
+  const randomGift = () => {
+    const index = Math.floor(Math.random() * gifts.length)
+    setGift(gifts[index]);
+    console.log(gifts[index])
+  }
 
   return (
     <SafeAreaView style={styles.Container}>
       <View styles={styles.container}>
-        <Text style={styles.txt}>{counter}</Text>
+        <Text style={styles.txt}>{gift || 'chua co phan thuong'}</Text>
       </View>
       <View >
-        <TouchableOpacity onPress={handleIncrease} style={styles.btn}>
+        <TouchableOpacity onPress= {randomGift} style={styles.btn}>
           <Text style={styles.txtBtn}>Increase</Text>
         </TouchableOpacity>
       </View>
